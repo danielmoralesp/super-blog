@@ -12,7 +12,7 @@
         Publicado por <%= current_user.email %> hace <%= time_ago_in_words(@post.created_at) %>
         <br><br>
       </div>
-      <div class="date">
+      <div class="date" data-provide="markdown-show">
         <%= @post.body %>
       </div>
       <div>
