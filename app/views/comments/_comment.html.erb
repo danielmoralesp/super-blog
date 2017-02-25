@@ -5,5 +5,7 @@
   <div class="panel-body">
     <%= comment.body %>
   </div>
+  <% if user_signed_in? %>
   <%= link_to "<span class='glyphicon glyphicon-trash'></span>".html_safe,  [comment.post, comment],  method: :delete, data: { confirm: "¿Estás seguro de eliminar este comentario?" } %>
+  <% end %>
 </div>
