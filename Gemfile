@@ -28,6 +28,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise', '~> 3.4.0'
 #i18n
 gem 'rails-i18n', '~> 4.0.0'
+#markdown
+gem 'ace-rails-ap'
+gem 'bootstrap-markdown-editor-rails'
 
 
 # Use ActiveModel has_secure_password
