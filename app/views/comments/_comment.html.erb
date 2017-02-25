@@ -1,0 +1,9 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= comment.name %></h3>
+  </div>
+  <div class="panel-body">
+    <%= comment.body %>
+  </div>
+  <%= link_to "<span class='glyphicon glyphicon-trash'></span>".html_safe,  [comment.post, comment],  method: :delete, data: { confirm: "¿Estás seguro de eliminar este comentario?" } %>
+</div>
