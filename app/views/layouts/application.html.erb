@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
 </head>
 <body>
   <nav class="navbar navbar-default">
@@ -23,7 +24,7 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
-            <li><%= current_user.email %></li>
+            <li><%= link_to current_user.email %></li>
             <li><%= link_to "Nuevo Post", new_post_path %></li>
             <li><%= link_to('Salir', destroy_user_session_path, :method => :delete) %></li>
           <% else %>

@@ -25,12 +25,12 @@ class PostsController < ApplicationController
 
   def edit
     #@post = Post.find(params[:id])
-    @post = current_user.post.find(params[:id])
+    @post = current_user.posts.find(params[:id])
   end
 
   def update
     #@post = Post.find(params[:id])
-    @post = current_user.post.find(params[:id])
+    @post = current_user.posts.find(params[:id])
 
     if @post.update(params[:post].permit(:title, :body))
       redirect_to posts_path, notice: "El articulo fue editado con éxito"
