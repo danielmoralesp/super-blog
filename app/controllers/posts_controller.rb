@@ -13,7 +13,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
 
     if @post.save
-      redirect_to @post
+      redirect_to @post, notice: "El articulo fue publicado con éxito"
     else
       render :new
     end
@@ -24,14 +24,16 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
+    #@post = Post.find(params[:id])
+    @post = current_user.post.find(params[:id])
   end
 
   def update
-    @post = Post.find(params[:id])
+    #@post = Post.find(params[:id])
+    @post = current_user.post.find(params[:id])
 
     if @post.update(params[:post].permit(:title, :body))
-      redirect_to @post
+      redirect_to posts_path, notice: "El articulo fue editado con éxito"
     else
       render :edit
     end
@@ -41,11 +43,11 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.destroy
 
-    redirect_to posts_path
+    redirect_to posts_path, notice: "El articulo fue eliminado con éxito"
   end
 
   private
     def post_params
-      params.require(:post).permit(:title, :body)
+      params.require(:post).permit(:title, :body, :user_id)
     end
 end

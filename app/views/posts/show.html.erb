@@ -4,25 +4,24 @@
       <h1 class="title">
         <%= @post.title %>
       </h1>
-      <% if user_signed_in? %>
+      <% if (user_signed_in? && (current_user.id == @post.user_id)) %>
         <%= link_to " <span class='glyphicon glyphicon-pencil'>Editar</span>  ".html_safe, edit_post_path(@post) %>
         <%= link_to " <span class='glyphicon glyphicon-trash'>Eliminar</span> ".html_safe,  @post,  method: :delete, data: { confirm: "¿Estás seguro de eliminar este post?" } %>
       <% end %> <br><br>
       <div class="date">
-        Publicado por <%= current_user.email %> hace <%= time_ago_in_words(@post.created_at) %>
+        Publicado por " <%= @post.user.email %> " hace <%= time_ago_in_words(@post.created_at) %>
+        <!-- current_user.email -->
         <br><br>
       </div>
       <div class="date" data-provide="markdown-show">
         <%= @post.body %>
       </div>
+      <br><br>
       <div>
-        <p><%= @post.comments.count %></p>
+        <h5>Numero de Comentarios (<%= @post.comments.count %>)</h5>
         <%= render @post.comments %>
-
-        <h2>Añador comentario</h2>
         <%= render "comments/form" %>
       </div>
-
     </div>
   </div>
 </div>
